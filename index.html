@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Explorers - Kids Learning World</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F8FAFC; /* Clean off-white background */
+      color: #334155; /* Slate dark text for readability */
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1E3A8A; /* Deep Professional Navy Blue */
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      border-bottom: 4px solid #F59E0B; /* Warm Gold accent border */
+    }
+    nav {
+      background-color: #0F172A; /* Slate Dark Charcoal */
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    nav li a {
+      display: block;
+      color: #F1F5F9;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 22px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+    nav li a:hover {
+      background-color: #2563EB; /* Vibrant Royal Blue hover */
+      border-radius: 6px;
+    }
+    .hero {
+      background-color: #EFF6FF; /* Very soft blue tint */
+      text-align: center;
+      padding: 35px 20px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .hero h2 {
+      font-size: 26px;
+      color: #1E40AF;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 25px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sidebar {
+      flex: 1; /* Takes ~30% width */
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .sidebar h3 {
+      color: #1E3A8A;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E2E8F0;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      padding: 10px 0;
+      border-bottom: 1px solid #F1F5F9;
+      font-weight: 500;
+      font-size: 15px;
+      color: #475569;
+    }
+    .content {
+      flex: 3; /* Takes ~70% width */
+    }
+    .content h2 {
+      color: #0F172A;
+      margin-bottom: 10px;
+    }
+    .cards {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .card {
+      flex: 1;
+      background-color: #FFFFFF;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      color: #1E293B;
+      margin: 12px 0 6px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #64748B;
+    }
+
+    .card button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      background-color: #2563EB; /* Professional Blue button */
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #1D4ED8;
+    }
+
+    /* Interactive Section Styling */
+    .interactive-container {
+      max-width: 1200px;
+      margin: 0 auto 25px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .widget-box {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .widget-box h3 {
+      color: #1E3A8A;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E2E8F0;
+    }
+    .widget-box label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .widget-box input {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      outline: none;
+    }
+    .widget-box button {
+      padding: 10px 18px;
+      background-color: #2563EB;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .widget-box button:hover {
+      background-color: #1D4ED8;
+    }
+
+    footer {
+      background-color: #0F172A;
+      color: #94A3B8;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 992px) {
+      .container, .interactive-container {
+        flex-direction: column;
+      }
+
+      .cards {
+        flex-wrap: wrap; 
+      }
+
+      .card {
+        flex: 1 1 45%; 
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cards {
+        flex-direction: column; 
+      }
+
+      .card {
+        width: 100%;
+      }
+
+      .card button {
+        width: 100%; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Little Explorers Academy</h1>
+    <p>Interactive & Structured Learning for Kids</p>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Curriculum</a></li>
+      <li><a href="#">Art & Crafts</a></li>
+      <li><a href="#">Interactive Games</a></li>
+    </ul>
+  </nav>
+  <section class="hero">
+    <h2>Welcome Young Adventurers! 🌟</h2>
+    <p>Explore high-quality learning paths designed to build essential skills.</p>
+  </section>
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Quick Subjects</h3>
+      <ul>
+        <li>🔢 Mathematics</li>
+        <li>📖 Phonics & Reading</li>
+        <li>🧪 Science Discovery</li>
+        <li>🎨 Art & Design</li>
+        <li>🎵 Music & Rhymes</li>
+      </ul>
+    </aside>
+    <main class="content">
+      <h2>Featured Activities</h2>
+      <div class="cards">
+        
+        <div class="card">
+          <img src="cartoon-kids-reading-books.webp" alt="Reading Books">
+          <h3>Alphabet & Reading</h3>
+          <p>Develop reading comprehension through guided story sessions.</p>
+          <button>Start Reading</button>
+        </div>
+
+        <div class="card">
+          <img src="math.jpg" alt="Math Blocks">
+          <h3>Counting & Math</h3>
+          <p>Master basic arithmetic using interactive visual exercises.</p>
+          <button>Play Numbers</button>
+        </div>
+
+        <div class="card">
+          <img src="images.jpg" alt="Painting and Craft">
+          <h3>Creative Arts</h3>
+          <p>Express artistic skills with digital painting and crafts.</p>
+          <button>Start Painting</button>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Added Interactive Widgets -->
+  <section class="interactive-container">
+    <!-- Study vs. Play Tracker Widget -->
+    <div class="widget-box">
+      <h3>Study vs. Play Tracker</h3>
+      <label for="studyHours">Study Hours:</label>
+      <input type="number" id="studyHours" placeholder="e.g. 2">
+      
+      <label for="playHours">Play Hours:</label>
+      <input type="number" id="playHours" placeholder="e.g. 1">
+      
+      <button onclick="checkBalance();">Check Balance</button>
+      <p style="margin-top: 12px; font-size: 15px;">Status: <strong id="balanceStatus">-</strong></p>
+    </div>
+
+    <!-- Coin Flip Widget -->
+    <div class="widget-box" style="text-align: center;">
+      <h3>Flip for Turns!</h3>
+      <img id="coin" src="/head.svg" alt="Coin" style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;"><br>
+      <button id="flipBtn" style="margin: 12px 0;">Flip Coin</button>
+      <p style="font-size: 15px; font-weight: 500;">Heads: <span id="num_heads">0</span> | Tails: <span id="num_tails">0</span></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Little Explorers Learning Hub | Web Design Laboratory</p>
+  </footer>
+
+  <!-- Added JavaScript Code -->
+  <script>
+    // 1. Study/Play Balance Calculator Function
+    function checkBalance() {
+      const study = parseFloat(document.getElementById("studyHours").value) || 0;
+      const play = parseFloat(document.getElementById("playHours").value) || 0;
+      const statusSpan = document.getElementById("balanceStatus");
+
+      if (study === 0 && play === 0) {
+        statusSpan.innerText = "Please enter valid hours.";
+        statusSpan.style.color = "orange";
+        return;
+      }
+
+      const ratio = study / (study + play);
+      if (ratio >= 0.5) {
+        statusSpan.innerText = "Great study-to-play balance!";
+        statusSpan.style.color = "green";
+      } else {
+        statusSpan.innerText = "Too much screen play time! Take a study break.";
+        statusSpan.style.color = "red";
+      }
+    }
+
+    // 2. Coin Flip Mini-Game Logic
+    let heads = 0;
+    let tails = 0;
+
+    document.getElementById("flipBtn").addEventListener("click", function() {
+      const isHeads = Math.random() < 0.5;
+      const coinImg = document.getElementById("coin");
+
+      if (isHeads) {
+        coinImg.src = "head.svg";
+        heads++;
+        document.getElementById("num_heads").innerText = heads;
+      } else {
+        coinImg.src = "tail.svg";
+        tails++;
+        document.getElementById("num_tails").innerText = tails;
+      }
+    });
+  </script>
+
+</body>
+</html>
